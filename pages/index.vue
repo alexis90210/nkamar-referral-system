@@ -5,39 +5,61 @@
     >
       <div class="p-1 px-3 is-flex is-align-items-center">
         <img src="@/assets/icon.png" />
-        <span class="is-size-5 has-text-light pl-2 f-raleway">Nkamar</span>
+        <span class="is-size-5 has-text-light pl-2 f-raleway is-bold">Nkamar</span>
       </div>
 
       <div class="p-1 px-3 is-flex is-align-items-center" id="menu">
-        <span class="is-size-7 is-white pl-4 f-raleway nav-link" id="go-ccm"
+        <span class="is-size-7 is-white pl-4 f-raleway nav-link is-bold "  @click="$router.push('/#ccm')"
           >Comment &ccedil;a marche ?</span
         >
-        <span class="is-size-7 is-white pl-4 f-raleway nav-link" id="go-cc"
+        <span class="is-size-7 is-white pl-4 f-raleway nav-link is-bold "  @click="$router.push('/#cc')"
           >Contactez-nous</span
         >
-        <span class="is-size-7 is-white pl-4 f-raleway nav-link"
+        <span class="is-size-7 is-white pl-4 f-raleway nav-link is-bold "   @click="$router.push('/inscription')"
           >Inscription</span
         >
-        <span class="is-size-7 is-white pl-4 f-raleway nav-link" @click="$router.push('/connexion')"
+        <span class="is-size-7 is-white pl-4 f-raleway nav-link is-bold " @click="$router.push('/connexion')"
           >Connexion</span
         >
       </div>
       <div id="menu-hamburger" class="pt-1">
-        <button class="button" style="background-color: transparent">
-          <i class="mdi mdi-menu has-text-light"></i>
-        </button>
+             <b-dropdown aria-role="list">
+            <template #trigger="{ active }">
+                <b-button
+                    type="is-primary"
+                    style="background-color: transparent"
+                    :icon-right="active ? 'close' : 'menu'" />
+            </template>
+
+
+            <b-dropdown-item aria-role="listitem" id="go-ccm"  @click="$router.push('/#ccm')">
+              <b-icon icon="frequently-asked-questions" class="pr-3"></b-icon>
+              Comment &ccedil;a marche ?</b-dropdown-item>
+            <hr class="dropdown-divider">
+            <b-dropdown-item aria-role="listitem"  @click="$router.push('/#cc')" >
+              <b-icon icon="gesture-tap-button" class="pr-3"></b-icon>
+              Contactez-nous</b-dropdown-item>
+            <hr class="dropdown-divider">
+            <b-dropdown-item aria-role="listitem"  @click="$router.push('/inscription')">
+              <b-icon icon="shield-account-outline" class="pr-3"></b-icon>
+              Inscription</b-dropdown-item>
+            <hr class="dropdown-divider">
+            <b-dropdown-item aria-role="listitem"  @click="$router.push('/connexion')">
+              <b-icon icon="account-key" class="pr-3"></b-icon>
+              Connexion</b-dropdown-item>
+        </b-dropdown>
       </div>
     </div>
 
     <div class="columns polygon-header has-background-link-dark h130 p-6 mt-6">
       <div class="column is-three-fifths has-text-light pt-6">
         <h1 class="is-size-6">Bienvenu,</h1>
-        <b class="is-size-2 fs-medium"
+        <b class="is-bold is-size-2 fs-medium"
           >Inscrivez-vous , parrainez vos proches pour generer des fonds chaque
           jour sans aucunes limites</b
         >
         <br />
-        <button class="button border-none has-text-link-dark mt-6 is-rounded">
+        <button class="button border-none has-text-link-dark mt-6 is-rounded ">
           Commencez maintenant
         </button>
       </div>
@@ -46,7 +68,7 @@
     <div class="fix-position px-5">
       <div class="columns is-centered">
         <div class="column is-four-fifths" id="ccm">
-          <p class="is-size-5 is-dark pl-4 f-raleway">Comment ça marche ?</p>
+          <p class="is-bold is-size-5 is-dark pl-4 f-raleway">Comment ça marche ?</p>
           <!--  -->
           <div class="columns mt-6">
             <div class="column order">
@@ -55,7 +77,7 @@
             <div class="column centered-grid is-size-6">
               <div class="p-5">
                 Creer votre compte dans la fenetre
-                <nuxt-link class="m-0 p-0" to="/">Inscription</nuxt-link>
+                <nuxt-link class="m-0 p-0" to="/inscription">Inscription</nuxt-link>
                 et ensuite valider votre compte .N’hésitez pas en fin de
                 partager votre ID de parrainage / liens de parrainage!
               </div>
@@ -99,7 +121,7 @@
           </div>
           <!--  -->
 
-          <p class="is-size-5 is-dark pl-4 f-raleway mt-6 py-6">
+          <p class="is-bold is-size-5 is-dark pl-4 f-raleway mt-6 py-6">
             Contactez-nous
           </p>
 
@@ -141,20 +163,6 @@
       </div>
     </div>
 
-    <!-- MOBILE MENU -->
-    <div class="p-1 px-3 is-flex is-align-items-center mobile">
-      <span class="is-size-7 is-white pl-4 f-raleway nav-link" id="go-ccm"
-        >Comment ca marche ?</span
-      >
-      <span class="is-size-7 is-white pl-4 f-raleway nav-link" id="go-cc"
-        >Contactez-nous</span
-      >
-      <span class="is-size-7 is-white pl-4 f-raleway nav-link"
-        >Inscription</span
-      >
-      <span class="is-size-7 is-white pl-4 f-raleway nav-link" @click="$router.push('/connexion')">Connexion</span>
-    </div>
-    <!-- // MOBILE MENU -->
 
     <div class="polygon-footer h30-footer has-background-link-dark p-4 has-text-light pt-5">
       <p class="mt-6 pt-6 is-size-7">Copyright Nkamar@2022 v1.0.3</p>
@@ -168,31 +176,6 @@ import Login from "../components/login.vue";
 import Invest from "../components/invest.vue";
 
 if (process.client) {
-  // hide on click outside
-
-  if (document.querySelector(".mobile").classList.contains("open-menu")) {
-    document.addEventListener("click", (event) => {
-      const isClickInside = document
-        .querySelector(".mobile")
-        .contains(event.target);
-
-      console.log(isClickInside);
-
-      if (!isClickInside) {
-        document.querySelector(".mobile").classList.remove("open-menu");
-      }
-    });
-  }
-
-  // open on click on button
-
-  document
-    .querySelector("#menu-hamburger")
-    .addEventListener("click", function () {
-      document.querySelector(".mobile").classList.toggle("open-menu");
-    });
-
-  // scroll into view
 
   // open on click on button
 

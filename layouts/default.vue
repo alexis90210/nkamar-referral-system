@@ -21,11 +21,15 @@ export default {
 }
 
 .f-raleway {
-  font-family: "Raleway";
+  font-family: "Raleway" !important;
 }
 .sigin_in {
   width: 393px;
   height: 351.73152px;
+}
+
+.is-bold {
+  font-weight: 700;
 }
 
 .nav-link:hover {
