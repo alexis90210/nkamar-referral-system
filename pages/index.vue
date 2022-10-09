@@ -53,7 +53,7 @@
 
     <div class="columns polygon-header has-background-link-dark h130 p-6 mt-6">
       <div class="column is-three-fifths has-text-light pt-6">
-        <h1 class="is-size-6">Bienvenu,</h1>
+        <h1 class="is-size-6 fs-welcome">Bienvenu,</h1>
         <b class="is-bold is-size-2 fs-medium"
           >Inscrivez-vous , parrainez vos proches pour generer des fonds chaque
           jour sans aucunes limites</b
@@ -72,9 +72,9 @@
           <!--  -->
           <div class="columns mt-6">
             <div class="column order">
-              <login />
+              <center><login /></center>
             </div>
-            <div class="column centered-grid is-size-6">
+            <div class="column centered-grid is-size-6 fs-demo-text">
               <div class="p-5">
                 Creer votre compte dans la fenetre
                 <nuxt-link class="m-0 p-0" to="/inscription">Inscription</nuxt-link>
@@ -88,9 +88,9 @@
           <!--  -->
           <div class="columns">
             <div class="column order showit">
-              <network />
+              <center><network /></center>
             </div>
-            <div class="column centered-grid is-size-6">
+            <div class="column centered-grid is-size-6 fs-demo-text">
               <div class="p-5">
                 Obtenez une rémunération brute de 4 à 80% sur vos parrainages.
                 Un des services a utiliser au quotidien et qui me permet de
@@ -99,7 +99,7 @@
             </div>
 
             <div class="column order hidit">
-              <network />
+              <center><network /></center>
             </div>
           </div>
           <!--  -->
@@ -107,16 +107,16 @@
           <!--  -->
           <div class="columns mt-6">
             <div class="column order showit">
-              <invest />
+              <center><invest /></center>
             </div>
-            <div class="column centered-grid is-size-6">
+            <div class="column centered-grid is-size-6 fs-demo-text">
               <div class="p-5">
                 Rechargez votre solde selon la formule pour activer votre compte
                 et commencez a faire votre premier parrainage
               </div>
             </div>
             <div class="column order hidit">
-              <invest />
+              <center><invest /></center>
             </div>
           </div>
           <!--  -->
@@ -125,7 +125,9 @@
             Contactez-nous
           </p>
 
-          <div class="box mt-4 p-6" id="cc">
+          <div class="columns">
+            <div class="column is-four-fifths">
+              <div class="box mt-4 p-6" id="cc" style="zoom:90%">
             <div class="columns">
               <div class="column">
                 <b-field label-position="" label="Email">
@@ -159,13 +161,17 @@
               </div>
             </div>
           </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
 
-    <div class="polygon-footer h30-footer has-background-link-dark p-4 has-text-light pt-5">
-      <p class="mt-6 pt-6 is-size-7">Copyright Nkamar@2022 v1.0.3</p>
+    <div class="has-background-link-dark p-4 has-text-light pt-5">
+      <div class="">
+        <p class="py-3 is-size-7">Copyright Nkamar@2022 v1.0.3</p>
+      </div>
     </div>
   </div>
 </template>
@@ -175,29 +181,6 @@ import Network from "../components/network.vue";
 import Login from "../components/login.vue";
 import Invest from "../components/invest.vue";
 
-if (process.client) {
-
-  // open on click on button
-
-  document.querySelector("#go-ccm").addEventListener("click", function () {
-    document.querySelector("#ccm").scrollIntoView({
-      behavior: "smooth", // Defines the transition animation. default: auto
-      block: "nearest", // Defines vertical alignment. default: start
-      inline: "nearest", // Defines horizontal alignment. default: nearest
-    });
-  });
-
-  document.querySelector("#go-cc").addEventListener("click", function () {
-    document.querySelector("#cc").scrollIntoView({
-      behavior: "smooth", // Defines the transition animation. default: auto
-      block: "nearest", // Defines vertical alignment. default: start
-      inline: "nearest", // Defines horizontal alignment. default: nearest
-    });
-  });
-
-} else {
-  console.log('server process');
-}
 export default { components: { Network, Login, Invest } };
 </script>
 

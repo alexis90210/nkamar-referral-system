@@ -48,6 +48,7 @@
                     <b-button
                       type="is-link"
                       rounded
+                      @click="connexion"
                       label="Se connecter"
                       icon-right="send"
                     ></b-button>
@@ -96,6 +97,20 @@ import Forgot from '../components/forgot.vue';
 
 export default {
   components: { Forgot },
+  data(){
+    return {
+      user:{
+        login:'',
+        password:''
+      },
+
+    }
+  },
+  methods:{
+    async connexion(){
+      this.$router.push('/dashboard/069500886')
+    }
+  }
 };
 </script>
 
