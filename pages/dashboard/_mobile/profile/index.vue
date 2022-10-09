@@ -75,7 +75,7 @@
       <div class="modal-content">
         <div class="mx-6 mt-6">
           <div class="columns is-centered">
-            <div class="column box is-four-fifths p-4">
+            <div class="column box is-three-fifths p-4">
               <div class="m-3">
                 <div class="columns is-centered">
                   <div class="column is-2">
@@ -94,7 +94,7 @@
                         class="p-1 mt-2"
                       >
                         <a class="button is-primary is-fullwidth">
-                          <span class="is-size-7">Prendre une image</span>
+                          <b-icon class="is-size-7" icon="camera"></b-icon>
                         </a>
                       </b-upload>
                     </center>
@@ -170,7 +170,7 @@
       <div class="modal-content">
         <div class="mx-6 mt-6">
           <div class="columns is-centered">
-            <div class="column box is-four-fifths p-4">
+            <div class="column box is-two-fifths p-4">
               <div class="m-3">
                 <p class="menu-label mt-3">MESSAGE FEEDBACK</p>
                 <section>

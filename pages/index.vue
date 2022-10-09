@@ -1,192 +1,319 @@
 <template>
-  <div>
-    <div
-      class="is-flex has-background-link-dark is-flex-direction-row is-justify-content-space-between p-4 fixed"
-    >
-      <div class="p-1 px-3 is-flex is-align-items-center">
-        <img src="@/assets/icon.png" />
-        <span class="is-size-5 has-text-light pl-2 f-raleway is-bold">Nkamar</span>
-      </div>
-
-      <div class="p-1 px-3 is-flex is-align-items-center" id="menu">
-        <span class="is-size-7 is-white pl-4 f-raleway nav-link is-bold "  @click="$router.push('/#ccm')"
-          >Comment &ccedil;a marche ?</span
-        >
-        <span class="is-size-7 is-white pl-4 f-raleway nav-link is-bold "  @click="$router.push('/#cc')"
-          >Contactez-nous</span
-        >
-        <span class="is-size-7 is-white pl-4 f-raleway nav-link is-bold "   @click="$router.push('/inscription')"
-          >Inscription</span
-        >
-        <span class="is-size-7 is-white pl-4 f-raleway nav-link is-bold " @click="$router.push('/connexion')"
-          >Connexion</span
-        >
-      </div>
-      <div id="menu-hamburger" class="pt-1">
-             <b-dropdown aria-role="list">
-            <template #trigger="{ active }">
-                <b-button
-                    type="is-primary"
-                    style="background-color: transparent"
-                    :icon-right="active ? 'close' : 'menu'" />
-            </template>
-
-
-            <b-dropdown-item aria-role="listitem" id="go-ccm"  @click="$router.push('/#ccm')">
-              <b-icon icon="frequently-asked-questions" class="pr-3"></b-icon>
-              Comment &ccedil;a marche ?</b-dropdown-item>
-            <hr class="dropdown-divider">
-            <b-dropdown-item aria-role="listitem"  @click="$router.push('/#cc')" >
-              <b-icon icon="gesture-tap-button" class="pr-3"></b-icon>
-              Contactez-nous</b-dropdown-item>
-            <hr class="dropdown-divider">
-            <b-dropdown-item aria-role="listitem"  @click="$router.push('/inscription')">
-              <b-icon icon="shield-account-outline" class="pr-3"></b-icon>
-              Inscription</b-dropdown-item>
-            <hr class="dropdown-divider">
-            <b-dropdown-item aria-role="listitem"  @click="$router.push('/connexion')">
-              <b-icon icon="account-key" class="pr-3"></b-icon>
-              Connexion</b-dropdown-item>
-        </b-dropdown>
-      </div>
-    </div>
-
-    <div class="columns polygon-header has-background-link-dark h130 p-6 mt-6">
-      <div class="column is-three-fifths has-text-light pt-6">
-        <h1 class="is-size-6 fs-welcome">Bienvenu,</h1>
-        <b class="is-bold is-size-2 fs-medium"
-          >Inscrivez-vous , parrainez vos proches pour generer des fonds chaque
-          jour sans aucunes limites</b
-        >
-        <br />
-        <button class="button border-none has-text-link-dark mt-6 is-rounded ">
-          Commencez maintenant
-        </button>
-      </div>
-    </div>
-
-    <div class="fix-position px-5">
-      <div class="columns is-centered">
-        <div class="column is-four-fifths" id="ccm">
-          <p class="is-bold is-size-5 is-dark pl-4 f-raleway">Comment ça marche ?</p>
-          <!--  -->
-          <div class="columns mt-6">
-            <div class="column order">
-              <center><login /></center>
+  <div class="has-background-white" style="zoom: 90%">
+    <nav class="navbar py-4">
+      <div class="container is-fluid">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <div class="p-1 px-3 is-flex is-align-items-center">
+              <img src="@/assets/icon.png" />
+              <span class="is-size-5 has-text-dark pl-2 f-raleway is-bold"
+                >Nkamar</span
+              >
             </div>
-            <div class="column centered-grid is-size-6 fs-demo-text">
-              <div class="p-5">
-                Creer votre compte dans la fenetre
-                <nuxt-link class="m-0 p-0" to="/inscription">Inscription</nuxt-link>
-                et ensuite valider votre compte .N’hésitez pas en fin de
-                partager votre ID de parrainage / liens de parrainage!
-              </div>
-            </div>
+          </a>
+          <a
+            class="navbar-burger"
+            role="button"
+            @click="open=!open"
+            aria-label="menu"
+            aria-expanded="false"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="#a-propos">A-propos</a
+            ><a class="navbar-item" href="#nous-contacter">Nous contacter</a
+            ><a class="navbar-item" @click="$router.push('/inscription')"
+              >Inscription</a
+            ><a class="navbar-item" @click="$router.push('/connexion')"
+              >Connexion</a
+            >
           </div>
-          <!--  -->
-
-          <!--  -->
-          <div class="columns">
-            <div class="column order showit">
-              <center><network /></center>
-            </div>
-            <div class="column centered-grid is-size-6 fs-demo-text">
-              <div class="p-5">
-                Obtenez une rémunération brute de 4 à 80% sur vos parrainages.
-                Un des services a utiliser au quotidien et qui me permet de
-                gagner de l’argent de manière régulière.
-              </div>
-            </div>
-
-            <div class="column order hidit">
-              <center><network /></center>
-            </div>
+        </div>
+      </div>
+    </nav>
+    <div class="navbar-item" v-if="open">
+            <a class="navbar-item" href="#a-propos">A-propos</a
+            ><a class="navbar-item" href="#nous-contacter">Nous contacter</a
+            ><a class="navbar-item" @click="$router.push('/inscription')"
+              >Inscription</a
+            ><a class="navbar-item" @click="$router.push('/connexion')"
+              >Connexion</a
+            >
           </div>
-          <!--  -->
 
-          <!--  -->
-          <div class="columns mt-6">
-            <div class="column order showit">
-              <center><invest /></center>
-            </div>
-            <div class="column centered-grid is-size-6 fs-demo-text">
-              <div class="p-5">
-                Rechargez votre solde selon la formule pour activer votre compte
-                et commencez a faire votre premier parrainage
-              </div>
-            </div>
-            <div class="column order hidit">
-              <center><invest /></center>
-            </div>
-          </div>
-          <!--  -->
-
-          <p class="is-bold is-size-5 is-dark pl-4 f-raleway mt-6 py-6">
-            Contactez-nous
-          </p>
-
-          <div class="columns">
-            <div class="column is-four-fifths">
-              <div class="box mt-4 p-6" id="cc" style="zoom:90%">
-            <div class="columns">
-              <div class="column">
-                <b-field label-position="" label="Email">
-                  <b-input icon="email"></b-input>
-                </b-field>
-              </div>
-
-              <div class="column">
-                <b-field label-position="" label="Telephone">
-                  <b-input icon="phone"></b-input>
-                </b-field>
-              </div>
-            </div>
-
-            <div class="columns">
-              <div class="column">
-                <b-field label-position="" label="Message">
-                  <b-input type="textarea"></b-input>
-                </b-field>
-              </div>
-            </div>
-
-            <div class="is-flex is-justify-content-end">
-              <div class="">
-                <b-button
-                  type="is-link"
-                  label="Envoyer"
-                  rounded
-                  icon-right="send"
-                ></b-button>
-              </div>
-            </div>
-          </div>
-            </div>
+    <div class="container is-fluid p-0">
+      <div class="columns has-background-link has-text-light">
+      <div class="column">
+        <div class="my-6 pb-3 columns is-multiline">
+          <div class="column is-12 is-6-desktop mx-auto has-text-centered">
+            <h2 class="mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">
+              Bienvenu, cher visiteur
+            </h2>
+            <p class="subtitle has-text-light mb-5">
+              <b class="is-bold"
+                >Inscrivez-vous , parrainez vos proches pour generer des fonds
+                chaque jour sans aucunes limites</b
+              >
+            </p>
           </div>
         </div>
       </div>
     </div>
-
-
-    <div class="has-background-link-dark p-4 has-text-light pt-5">
-      <div class="">
-        <p class="py-3 is-size-7">Copyright Nkamar@2022 v1.0.3</p>
-      </div>
     </div>
+
+    <section class="section">
+      <div class="container">
+        <div
+          class="columns is-multiline p-4 mt-5"
+          id="a-propos"
+          style="zoom: 80%"
+        >
+          <div class="column is-12 is-4-desktop">
+            <div class="mb-6 is-flex">
+              <span>
+                <svg
+                  width="48"
+                  height="48"
+                  viewbox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M25.6 22.9C25.7 23 25.8 23 26 23H33C33.6 23 34 22.6 34 22C34 21.8 34 21.7 33.9 21.6L30.4 14.6C30.1 14.1 29.5 13.9 29 14.2C28.9 14.3 28.7 14.4 28.6 14.6L25.1 21.6C24.9 22 25.1 22.6 25.6 22.9ZM29.5 17.2L31.4 21H27.6L29.5 17.2ZM18.5 14C16 14 14 16 14 18.5C14 21 16 23 18.5 23C21 23 23 21 23 18.5C23 16 21 14 18.5 14ZM18.5 21C17.1 21 16 19.9 16 18.5C16 17.1 17.1 16 18.5 16C19.9 16 21 17.1 21 18.5C21 19.9 19.9 21 18.5 21ZM22.7 25.3C22.3 24.9 21.7 24.9 21.3 25.3L18.5 28.1L15.7 25.3C15.3 24.9 14.7 24.9 14.3 25.3C13.9 25.7 13.9 26.3 14.3 26.7L17.1 29.5L14.3 32.3C13.9 32.7 13.9 33.3 14.3 33.7C14.7 34.1 15.3 34.1 15.7 33.7L18.5 30.9L21.3 33.7C21.7 34.1 22.3 34.1 22.7 33.7C23.1 33.3 23.1 32.7 22.7 32.3L19.9 29.5L22.7 26.7C23.1 26.3 23.1 25.7 22.7 25.3ZM33 25H26C25.4 25 25 25.4 25 26V33C25 33.6 25.4 34 26 34H33C33.6 34 34 33.6 34 33V26C34 25.4 33.6 25 33 25ZM32 32H27V27H32V32Z"
+                    fill="#7B66D5"
+                  ></path>
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="23.5"
+                    stroke="#7B66D5"
+                  ></circle></svg
+              ></span>
+              <div class="ml-3">
+                <h4 class="is-size-4 has-text-weight-bold mb-2">
+                  Travaillez a la maison
+                </h4>
+                <p class="subtitle has-text-dark">
+                  Parrainnez depuis chez vous et gagnez votre commission
+                </p>
+              </div>
+            </div>
+            <div class="mb-6 is-flex">
+              <span>
+                <svg
+                  width="48"
+                  height="48"
+                  viewbox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M25.6 22.9C25.7 23 25.8 23 26 23H33C33.6 23 34 22.6 34 22C34 21.8 34 21.7 33.9 21.6L30.4 14.6C30.1 14.1 29.5 13.9 29 14.2C28.9 14.3 28.7 14.4 28.6 14.6L25.1 21.6C24.9 22 25.1 22.6 25.6 22.9ZM29.5 17.2L31.4 21H27.6L29.5 17.2ZM18.5 14C16 14 14 16 14 18.5C14 21 16 23 18.5 23C21 23 23 21 23 18.5C23 16 21 14 18.5 14ZM18.5 21C17.1 21 16 19.9 16 18.5C16 17.1 17.1 16 18.5 16C19.9 16 21 17.1 21 18.5C21 19.9 19.9 21 18.5 21ZM22.7 25.3C22.3 24.9 21.7 24.9 21.3 25.3L18.5 28.1L15.7 25.3C15.3 24.9 14.7 24.9 14.3 25.3C13.9 25.7 13.9 26.3 14.3 26.7L17.1 29.5L14.3 32.3C13.9 32.7 13.9 33.3 14.3 33.7C14.7 34.1 15.3 34.1 15.7 33.7L18.5 30.9L21.3 33.7C21.7 34.1 22.3 34.1 22.7 33.7C23.1 33.3 23.1 32.7 22.7 32.3L19.9 29.5L22.7 26.7C23.1 26.3 23.1 25.7 22.7 25.3ZM33 25H26C25.4 25 25 25.4 25 26V33C25 33.6 25.4 34 26 34H33C33.6 34 34 33.6 34 33V26C34 25.4 33.6 25 33 25ZM32 32H27V27H32V32Z"
+                    fill="#7B66D5"
+                  ></path>
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="23.5"
+                    stroke="#7B66D5"
+                  ></circle></svg
+              ></span>
+              <div class="ml-3">
+                <h4 class="is-size-4 has-text-weight-bold mb-2">
+                  Investissement sur
+                </h4>
+                <p class="subtitle has-text-dark">
+                  Votre Investissement ne sera jamais perdu, nous vous
+                  garantissons un 100% gain
+                </p>
+              </div>
+            </div>
+            <div class="mb-6 is-flex">
+              <span>
+                <svg
+                  width="48"
+                  height="48"
+                  viewbox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M25.6 22.9C25.7 23 25.8 23 26 23H33C33.6 23 34 22.6 34 22C34 21.8 34 21.7 33.9 21.6L30.4 14.6C30.1 14.1 29.5 13.9 29 14.2C28.9 14.3 28.7 14.4 28.6 14.6L25.1 21.6C24.9 22 25.1 22.6 25.6 22.9ZM29.5 17.2L31.4 21H27.6L29.5 17.2ZM18.5 14C16 14 14 16 14 18.5C14 21 16 23 18.5 23C21 23 23 21 23 18.5C23 16 21 14 18.5 14ZM18.5 21C17.1 21 16 19.9 16 18.5C16 17.1 17.1 16 18.5 16C19.9 16 21 17.1 21 18.5C21 19.9 19.9 21 18.5 21ZM22.7 25.3C22.3 24.9 21.7 24.9 21.3 25.3L18.5 28.1L15.7 25.3C15.3 24.9 14.7 24.9 14.3 25.3C13.9 25.7 13.9 26.3 14.3 26.7L17.1 29.5L14.3 32.3C13.9 32.7 13.9 33.3 14.3 33.7C14.7 34.1 15.3 34.1 15.7 33.7L18.5 30.9L21.3 33.7C21.7 34.1 22.3 34.1 22.7 33.7C23.1 33.3 23.1 32.7 22.7 32.3L19.9 29.5L22.7 26.7C23.1 26.3 23.1 25.7 22.7 25.3ZM33 25H26C25.4 25 25 25.4 25 26V33C25 33.6 25.4 34 26 34H33C33.6 34 34 33.6 34 33V26C34 25.4 33.6 25 33 25ZM32 32H27V27H32V32Z"
+                    fill="#7B66D5"
+                  ></path>
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="23.5"
+                    stroke="#7B66D5"
+                  ></circle></svg
+              ></span>
+              <div class="ml-3">
+                <h4 class="is-size-4 has-text-weight-bold mb-2">
+                  Retrait d'argent
+                </h4>
+                <p class="subtitle has-text-dark">
+                  Retirez votre argent, quand vous le souhaitez sans
+                  complications sous 24h
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="column is-4 is-block-desktop is-hidden-touch">
+            <img
+              class="mx-auto mt-0-widescreen is-block image"
+              src="@/assets/app.png"
+              alt=""
+              style="zoom: 40% !important"
+            />
+          </div>
+          <div class="column is-12 is-4-desktop">
+            <div class="mb-6 is-flex">
+              <span>
+                <svg
+                  width="48"
+                  height="48"
+                  viewbox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M25.6 22.9C25.7 23 25.8 23 26 23H33C33.6 23 34 22.6 34 22C34 21.8 34 21.7 33.9 21.6L30.4 14.6C30.1 14.1 29.5 13.9 29 14.2C28.9 14.3 28.7 14.4 28.6 14.6L25.1 21.6C24.9 22 25.1 22.6 25.6 22.9ZM29.5 17.2L31.4 21H27.6L29.5 17.2ZM18.5 14C16 14 14 16 14 18.5C14 21 16 23 18.5 23C21 23 23 21 23 18.5C23 16 21 14 18.5 14ZM18.5 21C17.1 21 16 19.9 16 18.5C16 17.1 17.1 16 18.5 16C19.9 16 21 17.1 21 18.5C21 19.9 19.9 21 18.5 21ZM22.7 25.3C22.3 24.9 21.7 24.9 21.3 25.3L18.5 28.1L15.7 25.3C15.3 24.9 14.7 24.9 14.3 25.3C13.9 25.7 13.9 26.3 14.3 26.7L17.1 29.5L14.3 32.3C13.9 32.7 13.9 33.3 14.3 33.7C14.7 34.1 15.3 34.1 15.7 33.7L18.5 30.9L21.3 33.7C21.7 34.1 22.3 34.1 22.7 33.7C23.1 33.3 23.1 32.7 22.7 32.3L19.9 29.5L22.7 26.7C23.1 26.3 23.1 25.7 22.7 25.3ZM33 25H26C25.4 25 25 25.4 25 26V33C25 33.6 25.4 34 26 34H33C33.6 34 34 33.6 34 33V26C34 25.4 33.6 25 33 25ZM32 32H27V27H32V32Z"
+                    fill="#7B66D5"
+                  ></path>
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="23.5"
+                    stroke="#7B66D5"
+                  ></circle></svg
+              ></span>
+              <div class="ml-3">
+                <h4 class="is-size-4 has-text-weight-bold mb-2">
+                  Parrainnez sans limites et en un clic
+                </h4>
+                <p class="subtitle has-text-dark">
+                  Envoyez votre lien de parrainnage a vos proches
+                </p>
+              </div>
+            </div>
+            <div class="mb-6 is-flex">
+              <span>
+                <svg
+                  width="48"
+                  height="48"
+                  viewbox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M25.6 22.9C25.7 23 25.8 23 26 23H33C33.6 23 34 22.6 34 22C34 21.8 34 21.7 33.9 21.6L30.4 14.6C30.1 14.1 29.5 13.9 29 14.2C28.9 14.3 28.7 14.4 28.6 14.6L25.1 21.6C24.9 22 25.1 22.6 25.6 22.9ZM29.5 17.2L31.4 21H27.6L29.5 17.2ZM18.5 14C16 14 14 16 14 18.5C14 21 16 23 18.5 23C21 23 23 21 23 18.5C23 16 21 14 18.5 14ZM18.5 21C17.1 21 16 19.9 16 18.5C16 17.1 17.1 16 18.5 16C19.9 16 21 17.1 21 18.5C21 19.9 19.9 21 18.5 21ZM22.7 25.3C22.3 24.9 21.7 24.9 21.3 25.3L18.5 28.1L15.7 25.3C15.3 24.9 14.7 24.9 14.3 25.3C13.9 25.7 13.9 26.3 14.3 26.7L17.1 29.5L14.3 32.3C13.9 32.7 13.9 33.3 14.3 33.7C14.7 34.1 15.3 34.1 15.7 33.7L18.5 30.9L21.3 33.7C21.7 34.1 22.3 34.1 22.7 33.7C23.1 33.3 23.1 32.7 22.7 32.3L19.9 29.5L22.7 26.7C23.1 26.3 23.1 25.7 22.7 25.3ZM33 25H26C25.4 25 25 25.4 25 26V33C25 33.6 25.4 34 26 34H33C33.6 34 34 33.6 34 33V26C34 25.4 33.6 25 33 25ZM32 32H27V27H32V32Z"
+                    fill="#7B66D5"
+                  ></path>
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="23.5"
+                    stroke="#7B66D5"
+                  ></circle></svg
+              ></span>
+              <div class="ml-3">
+                <h4 class="is-size-4 has-text-weight-bold mb-2">
+                  Paiement sur et securise
+                </h4>
+                <p class="subtitle has-text-dark">
+                  Paiement via les services de paiement mobile MTN et Airtel
+                </p>
+              </div>
+            </div>
+            <div class="mb-6 is-flex">
+              <span>
+                <svg
+                  width="48"
+                  height="48"
+                  viewbox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M25.6 22.9C25.7 23 25.8 23 26 23H33C33.6 23 34 22.6 34 22C34 21.8 34 21.7 33.9 21.6L30.4 14.6C30.1 14.1 29.5 13.9 29 14.2C28.9 14.3 28.7 14.4 28.6 14.6L25.1 21.6C24.9 22 25.1 22.6 25.6 22.9ZM29.5 17.2L31.4 21H27.6L29.5 17.2ZM18.5 14C16 14 14 16 14 18.5C14 21 16 23 18.5 23C21 23 23 21 23 18.5C23 16 21 14 18.5 14ZM18.5 21C17.1 21 16 19.9 16 18.5C16 17.1 17.1 16 18.5 16C19.9 16 21 17.1 21 18.5C21 19.9 19.9 21 18.5 21ZM22.7 25.3C22.3 24.9 21.7 24.9 21.3 25.3L18.5 28.1L15.7 25.3C15.3 24.9 14.7 24.9 14.3 25.3C13.9 25.7 13.9 26.3 14.3 26.7L17.1 29.5L14.3 32.3C13.9 32.7 13.9 33.3 14.3 33.7C14.7 34.1 15.3 34.1 15.7 33.7L18.5 30.9L21.3 33.7C21.7 34.1 22.3 34.1 22.7 33.7C23.1 33.3 23.1 32.7 22.7 32.3L19.9 29.5L22.7 26.7C23.1 26.3 23.1 25.7 22.7 25.3ZM33 25H26C25.4 25 25 25.4 25 26V33C25 33.6 25.4 34 26 34H33C33.6 34 34 33.6 34 33V26C34 25.4 33.6 25 33 25ZM32 32H27V27H32V32Z"
+                    fill="#7B66D5"
+                  ></path>
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="23.5"
+                    stroke="#7B66D5"
+                  ></circle></svg
+              ></span>
+              <div class="ml-3">
+                <h4 class="is-size-4 has-text-weight-bold mb-2">Assistance</h4>
+                <p class="subtitle has-text-dark">
+                  L'equipe Nkamar vous assiste 24h/24
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section has-background-primary" id="nous-contacter">
+      <div class="container">
+        <div class="is-vcentered columns is-multiline">
+          <div class="column is-6 is-5-desktop mb-4">
+            <span class="has-text-white"></span>
+            <h2
+              class="has-text-white mt-2 mb-3 is-size-1 is-size-3-mobile has-text-weight-bold"
+            >
+              Nous n'attendons que vous
+            </h2>
+            <p class="has-text-white">
+              Notre service client est disponbile 24h/24 pour repondre a vos
+              questions
+            </p>
+          </div>
+          <div class="column is-5 ml-auto">
+            <div class="mx-auto box p-6 has-background-white has-text-centered">
+              <h4 class="is-size-5 mb-2 has-text-weight-bold">
+                Rejoindre notre equipe
+              </h4>
+              <p class="has-text-dark-dark mb-4">
+                Merci de renseigner votre e-mail
+              </p>
+              <form action="#">
+                <input class="input mb-3" type="email" placeholder="E-mail" />
+                <textarea
+                  class="textarea"
+                  placeholder="Message"
+                  rows="3"
+                ></textarea>
+                <button class="button mt-3 is-primary is-fullwidth">
+                  Soumettre
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
 </template>
 
 <script>
-import Network from "../components/network.vue";
-import Login from "../components/login.vue";
-import Invest from "../components/invest.vue";
-
-export default { components: { Network, Login, Invest } };
+export default {
+  data(){
+    return{
+      open:false
+    }
+  }
+};
 </script>
 
-<style>
-
-.open-menu {
-    display: block !important;
-  }
-</style>
+<style></style>

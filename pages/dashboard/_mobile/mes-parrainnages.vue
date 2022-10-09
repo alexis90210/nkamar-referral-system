@@ -2,6 +2,34 @@
   <div class="min-height-100">
     <!-- stats -->
     <p class="menu-label mt-3">MES PARRAINNAGES</p>
+
+    <div class="columns my-2" style="zoom:80%">
+      <b-tooltip label="Nouveau parrainnage" always class="column is-12"  position="is-top" type="is-warning">
+      <div class="">
+        <!-- Pack standards -->
+        <div class="card has-background-link-dark ">
+          <div class="card-content">
+            <div class="content">
+              <span class="is-size-7 has-text-light">VOTRE IDENTIFIANT</span>
+              <div class="is-size-5 has-text-light my-2">
+                <span class="pr-3">ANM_0695008543</span>                
+              </div>
+              <div style="zoom: 80%" class="">
+                <b-button
+                  outlined
+                  rounded
+                  type="is-light"
+                  @click="isParrainnage = true"
+                  label="Parrainer un proche"
+                ></b-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </b-tooltip>
+    </div>
+    
     <div class="box">
       <div class="go-right pb-5">
         <b-button
@@ -83,6 +111,46 @@
     </div>
 
     <!--  -->
+
+      <!-- MODAL -->
+      <div class="modal is-active" v-if="isParrainnage" style="z-index: 100">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="mx-6 mt-6">
+          <div class="columns is-centered">
+            <div class="column box is-two-fifths p-4">
+              <div class="m-3">
+                <p class="menu-label mt-3">NOUVEAU PARRAINNAGE</p>
+                <section>              
+
+                  <div class="columns">
+                    <div class="column">
+                      <b-field label="Lien de parrainnage">
+                        <b-input v-model="lien_parrainnage" onclick="this.select()"></b-input>
+                      </b-field>
+                    </div>
+                  </div>
+           
+               
+                </section>
+
+                <div class="go-right mt-5">
+                  <b-button
+                    rounded
+                    type="is-link"
+                    @click="copy"
+                    label="Copier"
+                  ></b-button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="delete is-large" @click="isParrainnage = false"></button>
+    </div>
+
+    <!--  -->
   </div>
 </template>
 
@@ -96,6 +164,8 @@ export default {
   data() {
     return {
       preview: false,
+      isParrainnage:false,
+      lien_parrainnage:'http://localhost:3000/je-suis-parrain/AMN_069500886',
       tree: [
         {
           firstPerson: {
@@ -180,6 +250,24 @@ export default {
     cardClick(item) {
       console.log(item);
     },
+
+    copy(){
+      try {
+        if (!navigator.clipboard) {
+          // Clipboard API not available
+          return;
+        }
+        
+        navigator.clipboard.writeText(this.lien_parrainnage);
+        this.$buefy.snackbar.open({
+          message:'Copie ok',
+          type:'is-success'
+        })
+        this.isParrainnage = false
+      } catch (error) {
+        console.log(error);
+      }
+    }
   },
 };
 </script>

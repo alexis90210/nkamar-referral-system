@@ -13,14 +13,15 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@800&display=swap');
 .modal-background {
     background-color: rgba(10, 10, 10, 0.322);
 }
 * {
   transition: all 0.3s ease-in;
   box-sizing: border-box;
-  font-family: "Ubuntu" !important;
+  font-family: 'Ubuntu', sans-serif !important;
+  scroll-behavior: smooth;
 }
 
 .sigin_in {

@@ -162,6 +162,16 @@
           <p class="menu-label my-6 is-bold is-size-7">Nkamar copyright @2022</p>
         </center>
       </div>
+
+      <!-- PARRAINNAGE -->
+      
+      <div class="fixed-photo box p-0">
+        <b-tooltip :label="$nuxt.isOnline ? 'Vous etes en ligne' :'Vous etes hors ligne'" :type="$nuxt.isOnline ? 'is-success' :'is-danger'" dashed position="is-left">
+        <img src="@/assets/photo.png" style="border-radius:50%" />
+        <div :class="$nuxt.isOnline ? 'online-box has-background-success' : 'online-box has-background-danger'"></div>
+    </b-tooltip>
+
+      </div>
     </div>
   </div>
 </template>
@@ -169,13 +179,17 @@
 <script>
 
 if(process.client) {
-  addEventListener('scroll', (event) => {
+  try {
+    addEventListener('scroll', (event) => {
     if(window.scrollY > 30) {
       document.querySelector("#menu-dash").classList.add('fixed-menu')
     } else {
       document.querySelector("#menu-dash").classList.remove('fixed-menu')
     }
   });
+  } catch (error) {
+    
+  }
 
 }
 export default {
@@ -191,8 +205,36 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@800&display=swap");
 .modal-background {
-  background-color: rgba(10, 10, 10, 0.322);
+    background-color: rgba(10, 10, 10, 0.322);
 }
+* {
+  transition: all 0.3s ease-in;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif !important;
+  scroll-behavior: smooth;
+}
+
+
+.fixed-photo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width:70px;
+  cursor: pointer;
+  height: 70px;
+  z-index:60
+}
+
+.online-box {
+  position: fixed;
+  border-radius: 50%;
+  bottom: 20px;
+  right: 23px;
+  width:16px;
+  height: 16px;
+  z-index:63
+}
+
 .go-right {
   width: 100%;
   font-size: 14px;
@@ -211,13 +253,6 @@ export default {
 
 .nav-hover:hover {
   text-decoration: underline;
-}
-
-* {
-  transition: all 0.3s ease-in;
-  box-sizing: border-box;
-  font-family: "Ubuntu" !important;
-  scroll-behavior: smooth;
 }
 
 .zoomit {

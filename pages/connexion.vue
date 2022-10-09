@@ -9,16 +9,22 @@
           <div class="columns">
             <div class="column centered-grid">
               <center class="is-size-5 is-dark pl-4 f-raleway mt-6 showit is-bold">
-                Connexion
+                <img
+                  src="@/assets/icon.png"
+                  class="showit my-3"
+                  style="zoom: 160%"
+                />
+                Bienvenu, Merci de vous Connecter
+                <Forgot class="hidit"/>
               </center>
-              <Forgot/>
+              <Forgot class="hidit"/>
             </div>
             <div class="column is-two-fifths">
               <p class="is-size-5 is-dark pl-4 f-raleway mt-6 pt-6 pb-3 hidit is-bold">
                 Bienvenu, Merci de vous Connecter
               </p>
 
-              <div class="box mt-4 p-4 m-1">
+              <div class="box mt-4 p-4 m-1 ml-5">
                 <div class="column">
                   <b-field label-position="" label="Login">
                     <b-input icon="account"></b-input>

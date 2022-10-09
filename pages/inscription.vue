@@ -16,9 +16,15 @@
               <center
                 class="is-size-5 is-dark pl-4 f-raleway mt-6 showit is-bold"
               >
-                Inscription
+                <img
+                  src="@/assets/icon.png"
+                  class="showit my-3"
+                  style="zoom: 160%"
+                />
+                Bienvenu, Merci de vous inscrire
+                <Sigin_in class="hidit" />
               </center>
-              <Sigin_in />
+              <Sigin_in class="hidit" />
             </div>
             <div class="column is-two-fifths">
               <p
@@ -27,7 +33,7 @@
                 Bienvenu, Merci de vous inscrire
               </p>
 
-              <div class="box mt-4 p-4 m-1">
+              <div class="box mt-4 p-4 m-1 ml-5">
                 <div class="column">
                   <b-field
                     label-position=""
@@ -158,65 +164,65 @@
       <div class="modal-content">
         <div class="box mx-3">
           <div class="media">
-          <div class="media-left">
-            <figure class="image is-48x48">
-              <b-icon icon="account-circle" size="is-large"></b-icon>
-            </figure>
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <b-icon icon="account-circle" size="is-large"></b-icon>
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4 fs-medium">
+                +{{ user.code_mobile_filleul }} {{ user.mobile_filleul }}
+              </p>
+              <p class="subtitle is-6">@{{ user.mobile_filleul }}</p>
+            </div>
           </div>
-          <div class="media-content">
-            <p class="title is-4 fs-medium">+{{user.code_mobile_filleul}} {{user.mobile_filleul}}</p>
-            <p class="subtitle is-6">@{{user.mobile_filleul}}</p>
+          <div class="content py-3">
+            Votre inscription est bientot terminee, veuillez indiquez votre
+            parrain
+            <br />
+
+            <div class="columns">
+              <div class="column mt-4">
+                <b-field
+                  label-position=""
+                  label="Identifiant du parrain"
+                  :type="
+                    start_editing_identifiant_parrain &&
+                    user.identifiant_parrain.length < 10
+                      ? 'is-danger'
+                      : user.identifiant_parrain.length >= 10
+                      ? 'is-success'
+                      : ''
+                  "
+                  :message="
+                    start_editing_identifiant_parrain &&
+                    user.identifiant_parrain.length < 10
+                      ? 'Identifiant incorrect'
+                      : user.identifiant_parrain.length >= 10
+                      ? 'Identifiant correct'
+                      : ''
+                  "
+                >
+                  <div class="is-flex">
+                    <b-input
+                      class="ml-1"
+                      type="tel"
+                      v-model="user.identifiant_parrain"
+                      @input="start_editing_identifiant_parrain = true"
+                    ></b-input>
+                  </div>
+                </b-field>
+              </div>
+            </div>
+
+            <b-button
+              type="is-link"
+              rounded
+              @click="inscription_2"
+              label="Suivant"
+              icon-right="send"
+            ></b-button>
           </div>
-        </div>
-        <div class="content py-3">
-          Votre inscription est bientot terminee, veuillez indiquez votre parrain
-          <br />
-
-          <div class="columns">
-            <div class="column mt-4">
-                  <b-field
-                    label-position=""
-                    label="Mobile du parrain"
-                    :type="
-                      start_editing_mobile_parrain && user.mobile_parrain.length != 9
-                        ? 'is-danger'
-                        : user.mobile_parrain.length == 9
-                        ? 'is-success'
-                        : ''
-                    "
-                    :message="
-                      start_editing_mobile_parrain && user.mobile_parrain.length != 9
-                        ? 'Mobile incorrect'
-                        : user.mobile_parrain.length == 9
-                        ? 'Mobile correct'
-                        : ''
-                    "
-                  >
-                    <div class="is-flex">
-                      <b-select icon="earth" v-model="user.code_mobile_filleul">
-                        <option value="242">+242</option>
-                      </b-select>
-
-                      <b-input
-                        class="ml-1"
-                        type="tel"
-                        v-model="user.mobile_parrain"
-                        @input="start_editing_mobile_parrain = true"
-                      ></b-input>
-                    </div>
-                  </b-field>
-                </div>
-          </div>
-          
-          <b-button
-                      type="is-link"
-                      rounded
-                      @click="inscription_2"
-                      label="Suivant"
-                      icon-right="send"
-                    ></b-button>
-
-        </div>
         </div>
       </div>
     </div>
@@ -232,16 +238,16 @@ export default {
       user: {
         code_mobile_filleul: "242",
         mobile_filleul: "",
-        mobile_parrain:'',
+        identifiant_parrain: "",
         password: "",
         other_password: "",
       },
       start_editing_mobile: false,
       start_editing_password: false,
       start_editing_other_password: false,
-      start_editing_mobile_parrain:false,
+      start_editing_identifiant_parrain: false,
       start_inscription: false,
-      isLoadingFull:false
+      isLoadingFull: false,
     };
   },
   methods: {
@@ -262,13 +268,17 @@ export default {
         return;
       }
 
-      this.start_inscription = true
+      if (this.$route.query.referral && this.$route.query.referral.length > 9) {
+        this.$router.push("/connexion");
+      } else {
+        this.start_inscription = true;
+      }
     },
 
     inscription_2() {
-      this.start_inscription = false
-      this.isLoadingFull = true
-    }
+      this.start_inscription = false;
+      this.isLoadingFull = true;
+    },
   },
 };
 </script>
