@@ -16,7 +16,7 @@
             <template #trigger>
               <a class="navbar-item is-flex is-flex-direction-row is-justify-content-start is-align-items-center" 
               role="button">
-                <span class="fs-medium pr-3 has-text-dark">@_{{role}}</span>
+                <span class="fs-medium pr-3 has-text-dark">{{whoiam}}</span>
                 <img src="@/assets/photo.png" style="border-radius:50%" />
                 <!-- <b-icon icon="menu-down"></b-icon> -->
               </a>
@@ -196,7 +196,8 @@ export default {
   data() {
     return {
       navigation: 'home',
-      role:'069500765'
+      role:'069500765',
+      whoiam:'Alexis Ngoyi'
     };
   },
 };
