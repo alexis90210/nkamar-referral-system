@@ -199,15 +199,5 @@ export default {
 </script>
 
 <style>
-.go-right {
-  width: 100%;
-  font-size: 14px;
-  text-align: right;
-  padding: 4px;
-}
 
-.th-wrap > .is-relative {
-    font-weight: bold;
-    font-size: 12px;
-}
 </style>

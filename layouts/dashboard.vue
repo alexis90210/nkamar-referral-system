@@ -1,5 +1,5 @@
 <template>
-  <div class="has-background-light">
+  <div class="has-background-light ">
     <nav id="menu-dash" class="is-flex is-flex-direction-row is-justify-content-space-between p-1 is-align-items-center p-3">
       <div class="is-flex is-flex-direction-row is-justify-content-start is-align-items-center">
         <img src="@/assets/icon.png" class="zoomit" />
@@ -26,7 +26,7 @@
               Connecte comme <b>Alexis ngoyi</b>
             </b-dropdown-item>
             <hr class="dropdown-divider" />
-            <b-dropdown-item value="blog" aria-role="menuitem">
+            <b-dropdown-item value="blog" aria-role="menuitem" @click="$router.push('/dashboard/'+role+'/profile')">
               <b-icon
                 icon="account-tie-outline"
                 size="is-small"
@@ -43,7 +43,7 @@
               ></b-icon
               ><span class="fs-medium nav-hover"> Tableau de bord</span>
             </b-dropdown-item>
-            <b-dropdown-item value="products" aria-role="menuitem">
+            <b-dropdown-item value="products" aria-role="menuitem" @click="$router.push('/dashboard/'+role+'/mes-revenus')">
               <b-icon
                 icon="account-cash-outline"
                 size="is-small"
@@ -52,7 +52,7 @@
               ><span class="fs-medium nav-hover"> Mes Revenus</span>
             </b-dropdown-item>
 
-            <b-dropdown-item value="products" aria-role="menuitem">
+            <b-dropdown-item value="products" aria-role="menuitem"  @click="$router.push('/dashboard/'+role+'/historique-retrait')">
               <b-icon
                 icon="cash-refund"
                 size="is-small"
@@ -70,6 +70,14 @@
               ></b-icon
               ><span class="fs-medium nav-hover">Mes parrainages</span>
             </b-dropdown-item>
+
+            <b-dropdown-item value="notification"   @click="$router.push('/dashboard/'+role + '/notifications')">
+            <b-icon
+              icon="message-alert-outline"
+              size="is-small"
+              class="pr-3"
+            ></b-icon
+            ><span class="fs-medium nav-hover"> Notifications</span></b-dropdown-item>
             <hr class="dropdown-divider" />
             <b-dropdown-item value="logout" aria-role="menuitem" @click="$router.push('/')">
               <b-icon icon="logout"></b-icon>
@@ -84,6 +92,15 @@
       <div class="column pl-6 hidit">
         <p class="menu-label mt-6">PROFILE</p>
         <ul class="menu-list">
+          
+          <li class="p-1 py-2" @click="$router.push('/dashboard/'+role+'/profile')">
+            <b-icon
+              icon="account-tie-outline"
+              size="is-small"
+              class="pr-3"
+            ></b-icon
+            ><span class="fs-medium nav-hover"> Profile</span>
+          </li>
           <li class="p-1 py-2"  @click="$router.push('/dashboard/'+role)">
             <b-icon
               icon="card-account-details"
@@ -92,15 +109,7 @@
             ></b-icon
             ><span class="fs-medium nav-hover"> Tableau de bord</span>
           </li>
-          <li class="p-1 py-2">
-            <b-icon
-              icon="account-tie-outline"
-              size="is-small"
-              class="pr-3"
-            ></b-icon
-            ><span class="fs-medium nav-hover"> Profile</span>
-          </li>
-          <li class="p-1 py-2">
+          <li class="p-1 py-2" @click="$router.push('/dashboard/'+role+'/mes-revenus')">
             <b-icon
               icon="account-cash-outline"
               size="is-small"
@@ -108,7 +117,7 @@
             ></b-icon
             ><span class="fs-medium nav-hover"> Mes Revenus</span>
           </li>
-          <li class="p-1 py-2">
+          <li class="p-1 py-2" @click="$router.push('/dashboard/'+role+'/historique-retrait')">
             <b-icon
                 icon="cash-refund"
                 size="is-small"
@@ -123,6 +132,15 @@
               class="pr-3"
             ></b-icon
             ><span class="fs-medium nav-hover">Mes parrainages</span>
+          </li>
+
+          <li class="p-1 py-2"  @click="$router.push('/dashboard/'+role + '/notifications')">
+            <b-icon
+              icon="message-alert-outline"
+              size="is-small"
+              class="pr-3"
+            ></b-icon
+            ><span class="fs-medium nav-hover"> Notifications</span>
           </li>
 
           <li class="p-1 py-2" @click="$router.push('/')">
@@ -174,6 +192,17 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@800&display=swap");
 .modal-background {
   background-color: rgba(10, 10, 10, 0.322);
+}
+.go-right {
+  width: 100%;
+  font-size: 14px;
+  text-align: right;
+  padding: 4px;
+}
+
+.th-wrap > .is-relative {
+    font-weight: bold;
+    font-size: 12px;
 }
 
 .menu-list > li {
@@ -423,6 +452,7 @@ export default {
   .fs-medium {
     font-size: 16px !important;
   }
+
 
   .fs-demo-text {
     font-size: 14px !important;
