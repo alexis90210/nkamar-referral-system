@@ -155,6 +155,14 @@
 </template>
 
 <script>
+if(process.client) {
+  document.addEventListener('keydown', (e) => {
+    e = e || window.event;
+    if(e.keyCode == 116){
+        e.preventDefault();
+    }
+});
+}
 
 import VueFamilyTree from "vue-family-tree";
 

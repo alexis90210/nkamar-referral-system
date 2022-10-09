@@ -83,7 +83,12 @@
 </template>
 
 <script>
-import VueApexCharts from 'vue-apexcharts'
+// import VueApexCharts from 'vue-apexcharts'
+
+if(process.client) {
+ var VueApexCharts = require('vue-apexcharts')
+}
+
 export default {
   layout: "dashboard",
   components: {  apexchart: VueApexCharts, },
